@@ -13,15 +13,3 @@
 	</div>
 </template>	
 
-<script>
-export default {
-  name: 'searchBar',
-  methods: {
-    sortProducts: function( sortBy ) {
-            this.sortByParam = sortBy;
-            this.orderDir = this.orderDir === "asc" ? "desc" : "asc";
-            this.products = _.orderBy( this.products, this.sortByParam, this.orderDir );
-          }
-  },
-};
-</script>
