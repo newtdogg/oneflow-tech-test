@@ -12,7 +12,7 @@
         </a>
       </li>
       <li>
-        <
+        <a
           href="https://forum.vuejs.org"
           target="_blank"
         >
@@ -30,7 +30,7 @@
       <li>
         <a
           href="https://twitter.com/vuejs"
-          target="_blank"
+          target="_blank"a
         >
           Twitter
         </a>
