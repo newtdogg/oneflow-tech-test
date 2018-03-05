@@ -7,7 +7,8 @@ module.exports = {
     .url('http://localhost:8080/')
       .waitForElementVisible('#app', 5000)
       .assert.visible('#app')
-      .assert.elementPresent('.form-control')
+      .assert.elementPresent('#searchBar')
+      .assert.elementPresent('#shoppingBasket')
       .end();
   },
 };

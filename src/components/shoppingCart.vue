@@ -1,5 +1,5 @@
   <template>
-    <div class="col-sm-5 col-sm-offset-1 well">
+    <div id="shoppingCart" class="col-sm-5 col-sm-offset-1 well">
         <div class="row">
           <div class="col-sm-7">
             <h2><i class="fa fa-shopping-cart"></i> Shopping Cart</h2>
@@ -55,5 +55,4 @@
         </ul>
       </div>
     </div>
-  </div>
 </template> 

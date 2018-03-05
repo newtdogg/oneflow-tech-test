@@ -1,8 +1,10 @@
 <template>
   <div class="container" id="app">
-    <searchBar></searchBar>
-    <list></list>
-    <shoppingCart></shoppingCart>
+    <div class="row">
+      <searchBar></searchBar>
+      <list></list>
+      <shoppingCart></shoppingCart>
+    </div>
   </div>
 </template>
 

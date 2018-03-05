@@ -1,8 +1,7 @@
 <template>
-	<div class="row">
         <div class="col-sm-6">
         	<div class="row">
-	            <div class="col-sm-12" v-for="item in filteredProducts">
+	            <div id="list" class="col-sm-12" v-for="item in filteredProducts">
 	              <h3>{{ item.name | titlecase }}</h3>
 	                <li v-for="option in item.options">
 	                  <strong>{{ option.details | titlecase }}</strong> {{ option.price | tocurrency }}
@@ -12,5 +11,5 @@
 	            </div>
           	</div>
         </div>
-    </div>
+
 </template>
