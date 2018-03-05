@@ -1,4 +1,3 @@
-
 <template>
   <div class="container" id="app">
     <div class="row">
@@ -126,7 +125,7 @@
   import searchBar from './components/searchBar.vue'
   import list from './components/list.vue'
   import shoppingCart from './components/shoppingCart.vue'
-  export default{
+  export default {
     
     components: {
       'list': list,
@@ -136,3 +135,5 @@
     
  }   
 </script>
+
+
