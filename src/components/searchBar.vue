@@ -13,6 +13,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 	export default {
     name: 'searchBar',
@@ -25,6 +26,8 @@
       }
   }
 </script>
+=======
+>>>>>>> parent of dc158a0... Ammended some of the vue code, still having trouble rendering the inventory
 =======
 >>>>>>> parent of dc158a0... Ammended some of the vue code, still having trouble rendering the inventory
 =======
