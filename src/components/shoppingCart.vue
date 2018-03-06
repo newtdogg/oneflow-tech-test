@@ -13,7 +13,7 @@
     </div>
     <hr>
     <ul class="list-unstyled">
-      <li class="row" v-for="item in shopping_cart">
+      <li class="row" v-for="item in $parent.shopping_cart">
         <div class="col-xs-9">
           <button class="btn btn-xs btn-default" @click="removeOne( item )" type="button" title="Remove One"><i class="fa fa-minus"></i></button>
           <small>{{ item.quantity | zeropad }}</small>
@@ -59,14 +59,11 @@
 <script>
 
 export default {
-  name: 'listOfItems',
+  name: 'shoppingCart',
     data() {
       return {
-        shopping_cart: [],
         donation: 0,
         subtotal: 0,
-        orderDir: "desc",
-        sortByParam: "",
       }
     },
     methods: {
@@ -76,11 +73,11 @@ export default {
       removeOne: function( product ) {
         product.quantity--;
         if ( product.quantity <= 0 ) {
-            this.shopping_cart.$remove( product );
+            this.$parent.shopping_cart.$remove( product );
         }
       },
       removeFromCart: function( product ) {
-        this.shopping_cart.$remove( product );
+        this.$parent.shopping_cart.$remove( product );
       }
     },
     filters: {
@@ -98,16 +95,16 @@ export default {
     computed: {
       count: function() {
         var itemCount = 0;
-        for ( var idx in this.shopping_cart ) {
-          var currentItem = this.shopping_cart[idx];
+        for ( var idx in this.$parent.shopping_cart ) {
+          var currentItem = this.$parent.shopping_cart[idx];
           itemCount += parseInt( currentItem.quantity );
         }
         return itemCount
       },
       total: function() {
         var totalCost = 0;
-        for ( var idx in this.shopping_cart ) {
-          var currentItem = this.shopping_cart[idx];
+        for ( var idx in this.$parent.shopping_cart ) {
+          var currentItem = this.$parent.shopping_cart[idx];
           totalCost += parseInt( currentItem.quantity ) * currentItem.price;
           totalCost += parseInt( this.donation );
         }

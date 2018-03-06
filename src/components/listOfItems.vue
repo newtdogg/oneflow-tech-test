@@ -9,7 +9,7 @@
             </div>
          </div>
 		<div class="row">
-			<div class="col-sm-12" v-for="item in products">
+			<div class="col-sm-12" v-for="item in filteredProducts">
 				<h3>{{ item.name | titlecase }}</h3>
 				<li v-for="option in item.options">
 				<strong>{{ option.details | titlecase }}</strong> {{ option.price | tocurrency }}
@@ -28,6 +28,8 @@ export default {
 	  data() {
 	  	return{
 	  		search: "",
+	  		sortByParam: "",
+	  		orderDir: "desc",
           products: [{
     'name': 'USB Stick',
 
@@ -97,12 +99,12 @@ export default {
             var itemName = product.name + " " + option.details;
             var itemPrice = option.price;
             var itemQuantity = 1;
-            for ( var index in this.shopping_cart ) {
-              var cartItem = this.shopping_cart[Index];
+            for ( var index in this.$parent.shopping_cart ) {
+              var cartItem = this.$parent.shopping_cart[Index];
               if ( option.id === cartItem.id ) {
                 itemQuantity = parseInt( cartItem.quantity ) + 1;
-                itemInCart = this.shopping_cart.indexOf( cartItem );
-                this.shopping_cart.splice( itemInCart, 1 );
+                itemInCart = this.$parent.shopping_cart.indexOf( cartItem );
+                this.$parent.shopping_cart.splice( itemInCart, 1 );
               }
             }
             var itemToAdd = {
@@ -111,7 +113,7 @@ export default {
               quantity: itemQuantity,
               id: option.id
             }
-            this.shopping_cart.push( itemToAdd );
+            this.$parent.shopping_cart.push( itemToAdd );
           }
 	  },
 	  filters: {

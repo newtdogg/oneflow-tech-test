@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container" id="app">
+  <div class="container" id="App">
     <div class="row">
       <listOfItems></listOfItems>
       <shoppingCart></shoppingCart>
@@ -14,11 +14,16 @@
   import shoppingCart from './components/shoppingCart.vue'
   import listOfItems from './components/listOfItems.vue'
   export default{
-    
+    name: 'App',
+    data() {
+      return {
+        shopping_cart: []
+      }
+    },
     components: {
-      'shoppingCart' : shoppingCart,
+      'shoppingCart': shoppingCart,
       'listOfItems': listOfItems
-    }
-    
- }   
+   } 
+}  
 </script>
+
