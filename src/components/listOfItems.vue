@@ -1,22 +1,33 @@
 <template>
-	<div class="row">
-		<div class="col-sm-12" v-for="item in products">
-			<h3>{{ item.name | titlecase }}</h3>
-			<li v-for="option in item.options">
-			<strong>{{ option.details | titlecase }}</strong> {{ option.price | tocurrency }}
-			<button class="btn btn-default btn-xs" type="button" @click="addToCart( item, option )" title="Add to Cart">Add to <i class="fa fa-cart-plus"></i></button>
-			</li>
-			</ul>
+	<div class="col-sm-6">
+        <div class="row">
+            <div class="input-group product-search">
+	            <input class="form-control" placeholder="Search products..." type="text" v-model="search">
+	            <div class="input-group-btn">
+                	<button class="btn btn-default" type="button" @click="sortProducts( 'name' )"><i class="fa fa-unsorted"></i> Sort By Name</button>
+              	</div>
+            </div>
+         </div>
+		<div class="row">
+			<div class="col-sm-12" v-for="item in products">
+				<h3>{{ item.name | titlecase }}</h3>
+				<li v-for="option in item.options">
+				<strong>{{ option.details | titlecase }}</strong> {{ option.price | tocurrency }}
+				<button class="btn btn-default btn-xs" type="button" @click="addToCart( item, option )" title="Add to Cart">Add to <i class="fa fa-cart-plus"></i></button>
+				</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import inventory from '../data.js'
-	export default {
+export default {
+
 	name: 'listOfItems',
 	  data() {
 	  	return{
+	  		search: "",
           products: [{
     'name': 'USB Stick',
 
@@ -77,10 +88,47 @@ import inventory from '../data.js'
         }
    	 },
 	  	methods: {
-	    reverseMessage: function () {
-	      this.message = this.message.split('').reverse().join('')
-	    }
+	    sortProducts: function( sortBy ) {
+            this.sortByParam = sortBy;
+            this.orderDir = this.orderDir === "asc" ? "desc" : "asc";
+            this.products = _.orderBy( this.products, this.sortByParam, this.orderDir );
+          },
+          addToCart: function( product, option ) {
+            var itemName = product.name + " " + option.details;
+            var itemPrice = option.price;
+            var itemQuantity = 1;
+            for ( var index in this.shopping_cart ) {
+              var cartItem = this.shopping_cart[Index];
+              if ( option.id === cartItem.id ) {
+                itemQuantity = parseInt( cartItem.quantity ) + 1;
+                itemInCart = this.shopping_cart.indexOf( cartItem );
+                this.shopping_cart.splice( itemInCart, 1 );
+              }
+            }
+            var itemToAdd = {
+              price: itemPrice,
+              listitem: itemName,
+              quantity: itemQuantity,
+              id: option.id
+            }
+            this.shopping_cart.push( itemToAdd );
+          }
 	  },
+	  filters: {
+	      tocurrency: function (num) {
+	        return accounting.formatMoney( num );
+	      },
+	      titlecase: function (str) {
+	      	 return _.startCase( str );
+	      },
+	      zeropad: function (num) {
+	      	if ( num !== 0 ) {
+	          return _.padStart( num, 2, '0' );
+	        } else {
+	          return 0;
+	        }
+	      }
+      },
 	  computed: {
           filteredProducts: function() {
             if ( this.search ) {
