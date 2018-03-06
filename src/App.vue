@@ -2,23 +2,21 @@
 <template>
   <div class="container" id="app">
     <div class="row">
-      <searchBar></searchBar>
-      <list></list>
-      <shoppingCart></shoppingCart>
+      <listOfItems></listOfItems>
     </div>
   </div>
 </template>
 
+<script src="./shoppingCart.js"></script>
+
 <script>
-  import searchBar from './components/searchBar.vue'
-  import list from './components/list.vue'
-  import shoppingCart from './components/shoppingCart.vue'
+  // import searchBar from './components/searchBar.vue'
+  import listOfItems from './components/listOfItems.vue'
   export default{
     
     components: {
-      'list': list,
-      'searchBar' : searchBar,
-      'shoppingCart': shoppingCart
+      // 'searchBar' : searchBar,
+      'listOfItems': listOfItems
     }
     
  }   
