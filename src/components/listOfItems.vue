@@ -1,7 +1,7 @@
 <template>
 	<div class="col-sm-6">
         <div class="row">
-            <div class="input-group product-search">
+            <div id="searchBar" class="input-group product-search">
 	            <input class="form-control" placeholder="Search products..." type="text" v-model="search">
 	            <div class="input-group-btn">
                 	<button class="btn btn-default" type="button" @click="sortProducts( 'name' )"><i class="fa fa-unsorted"></i> Sort By Name</button>
@@ -9,7 +9,7 @@
             </div>
          </div>
 		<div class="row">
-			<div class="col-sm-12" v-for="item in filteredProducts">
+			<div id="itemList" class="col-sm-12" v-for="item in filteredProducts">
 				<h3>{{ item.name | titlecase }}</h3>
 				<li v-for="option in item.options">
 				<strong>{{ option.details | titlecase }}</strong> {{ option.price | tocurrency }}
