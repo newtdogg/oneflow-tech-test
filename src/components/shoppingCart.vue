@@ -81,6 +81,9 @@ export default {
       }
     },
     filters: {
+      subvalue: function (val) {
+        return _.multiply( val.price, val.quantity );
+      },
       tocurrency: function (num) {
         return accounting.formatMoney( num );
       },
