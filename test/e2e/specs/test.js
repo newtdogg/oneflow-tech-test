@@ -56,13 +56,15 @@ module.exports = {
       browser.expect.element('#App').text.to.not.contain('Camera');
       browser.expect.element('#App').text.to.not.contain('USB Stick');
       browser.expect.element('#App').text.to.contain('Small Phone');
+      browser.end()
       
   },
 
   'An item can be added to the shopping cart': function test(browser) {
-    browser
-      .click('#addToCart')
-      .assert.containsText('.list-unstyled', 'Small Phone Nokia Phone ($199.00)')
+      browser.useXpath()
+      browser.click('//*[@id="16GB"]')
+      browser.assert.containsText('//*[@id="shoppingCart"]/ul', '01 USB Stick 16GB ($6.95)')
+      browser.end()
   },
 };
 
