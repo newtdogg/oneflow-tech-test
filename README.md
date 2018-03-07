@@ -2,6 +2,8 @@
 
 The challenge of this tech test was to take a html file, with its relevant JS and translate them into a Vue.js project. The Vue project was set up using the VueCli, enabling testing with nightwatchJS and backend testing with Karma. I initially seperated the html into two components, the list of items and the shopping cart itself. I wrote a first test to make sure these were rendered. These components were child components of App.vue, the parent component. I initially put the search bar as a seperate component but getting this to interact correctly with the list of items proved to be too difficult. I then seperated the JS into the two components, or into the parent component, depending on where the js was required. After this I added e2e tests with nightwatch, making sure the different parts of the website worked, until something broke which is when I corrected any issues, and continued to test.
 
+With more time I would like to learn the syntax better, to refactor and improve the code and improve the code structure. 
+
 ### Build Setup
 
 ``` bash

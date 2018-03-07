@@ -100,7 +100,15 @@ module.exports = {
       browser.end()
     },
 
-    
+    'A donation can be added to a purchase': function test(browser) {
+      browser.useXpath()
+      browser.click('//*[@id="16GB"]')
+      browser.click('//*[@id="shoppingCart"]/ul/li[3]/div[2]/div/select')
+      browser.click('//*[@id="shoppingCart"]/ul/li[3]/div[2]/div/select/option[4]')
+      browser.click('//*[@id="shoppingCart"]/ul/li[3]/div[2]/div/span')
+      browser.assert.containsText('//*[@id="shoppingCart"]/ul', '$16.95')
+      browser.end()
+    }
    
 };
 
