@@ -38,6 +38,14 @@ module.exports = {
       browser.expect.element('#App').text.to.contain('USB Plug');
   },
 
-  
+  'When the USB Stick is searched for, it is the only item returned in the list of items': function test(browser) {
+    browser
+      .clearValue('.form-control')
+      .setValue('.form-control', 'USB Stick')
+      browser.expect.element('#App').text.to.not.contain('USB Plug');
+      browser.expect.element('#App').text.to.not.contain('Camera');
+      browser.expect.element('#App').text.to.not.contain('Small Phone');
+      browser.expect.element('#App').text.to.contain('USB Stick');
+  },
 };
 
