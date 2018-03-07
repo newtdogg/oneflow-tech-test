@@ -15,14 +15,14 @@
     <ul class="list-unstyled">
       <li class="row" v-for="item in $parent.shopping_cart">
         <div class="col-xs-9">
-          <button class="btn btn-xs btn-default" @click="removeOne( item )" type="button" title="Remove One"><i class="fa fa-minus"></i></button>
+          <button :id="'removeOne' + item.listitem" class="btn btn-xs btn-default" @click="removeOne( item )" type="button" title="Remove One"><i class="fa fa-minus"></i></button>
           <small>{{ item.quantity | zeropad }}</small>
-          <button class="btn btn-xs btn-default" @click="addOne( item )" type="button" title="Add One"><i class="fa fa-plus"></i></button>
+          <button :id="'addOne' + item.listitem" class="btn btn-xs btn-default" @click="addOne( item )" type="button" title="Add One"><i class="fa fa-plus"></i></button>
           <small>{{ item.listitem }} ({{ item.price | tocurrency }})</small>
         </div>
         <div class="col-xs-3 text-right">
           <small>{{ item | subvalue | tocurrency }}</small>
-          <button class="btn btn-xs btn-danger btn-delete" @click="removeFromCart( item )" type="button" title="Remove From Cart"><i class="fa fa-times"></i></button>
+          <button :id="'removeAll' + item.listitem" class="btn btn-xs btn-danger btn-delete" @click="removeFromCart( item )" type="button" title="Remove From Cart"><i class="fa fa-times"></i></button>
         </div>
       </li>
       <li class="row total">
