@@ -7,7 +7,6 @@ module.exports = {
 
     browser
       .url(devServer)
-      .waitForElementVisible('#App', 5000)
   },
 
   'the main page is loaded': function (browser) {
@@ -63,6 +62,15 @@ module.exports = {
   'An item can be added to the shopping cart': function test(browser) {
       browser.useXpath()
       browser.click('//*[@id="16GB"]')
+      browser.assert.containsText('//*[@id="shoppingCart"]/ul', '01 USB Stick 16GB ($6.95)')
+      browser.end()
+  },
+
+  'Two different items can be added to the shopping cart': function test(browser) {
+      browser.useXpath()
+      browser.click('//*[@id="16GB"]')
+      browser.click('//*[@id="Nokia Phone"]')
+      browser.assert.containsText('//*[@id="shoppingCart"]/ul', '01 Small Phone Nokia Phone ($199.00)')
       browser.assert.containsText('//*[@id="shoppingCart"]/ul', '01 USB Stick 16GB ($6.95)')
       browser.end()
   },
