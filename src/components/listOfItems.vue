@@ -100,7 +100,7 @@ export default {
             var itemPrice = option.price;
             var itemQuantity = 1;
             for ( var index in this.$parent.shopping_cart ) {
-              var cartItem = this.$parent.shopping_cart[Index];
+              var cartItem = this.$parent.shopping_cart[index];
               if ( option.id === cartItem.id ) {
                 itemQuantity = parseInt( cartItem.quantity ) + 1;
                 itemInCart = this.$parent.shopping_cart.indexOf( cartItem );
