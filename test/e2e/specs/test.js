@@ -74,6 +74,34 @@ module.exports = {
       browser.assert.containsText('//*[@id="shoppingCart"]/ul', '01 USB Stick 16GB ($6.95)')
       browser.end()
   },
+
+  'A multiple of an item can be added in the cart': function test(browser) {
+      browser.useXpath()
+      browser.click('//*[@id="16GB"]')
+      browser.click('//*[@id="addOneUSB Stick 16GB"]')
+      browser.assert.containsText('//*[@id="shoppingCart"]/ul', '02 USB Stick 16GB ($6.95)')
+      browser.end()
+    },
+
+    'A multiple of an item can be removed in the cart': function test(browser) {
+      browser.useXpath()
+      browser.click('//*[@id="16GB"]')
+      browser.click('//*[@id="removeOneUSB Stick 16GB"]')
+      browser.assert.containsText('//*[@id="shoppingCart"]/ul', '0 Items')
+      browser.end()
+    },
+
+    'All of one item can be removed from the cart': function test(browser) {
+      browser.useXpath()
+      browser.click('//*[@id="16GB"]')
+      browser.click('//*[@id="addOneUSB Stick 16GB"]')
+      browser.click('//*[@id="removeAllUSB Stick 16GB"]')
+      browser.assert.containsText('//*[@id="shoppingCart"]/ul', '0 Items')
+      browser.end()
+    },
+
+    
+   
 };
 
 

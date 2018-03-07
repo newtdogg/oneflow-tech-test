@@ -73,11 +73,13 @@ export default {
       removeOne: function( product ) {
         product.quantity--;
         if ( product.quantity <= 0 ) {
-            this.$parent.shopping_cart.$remove( product );
+          var index = this.$parent.shopping_cart.indexOf(product)
+          this.$parent.shopping_cart.splice(index,1);
         }
       },
       removeFromCart: function( product ) {
-        this.$parent.shopping_cart.$remove( product );
+        var index = this.$parent.shopping_cart.indexOf(product)
+        this.$parent.shopping_cart.splice(index,1);
       }
     },
     filters: {
